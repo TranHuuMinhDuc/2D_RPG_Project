@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Elevation_Entry : MonoBehaviour
 {
@@ -15,11 +14,12 @@ public class Elevation_Entry : MonoBehaviour
             {
                 wall.enabled = false;
             }
-            collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
+            
             foreach(Collider2D boundary in boundaryCollider)
             {
                 boundary.enabled = true;
-            } 
+            }
+            collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
         }
             
     }
