@@ -9,6 +9,9 @@ public class Enemy_Movement : MonoBehaviour
 {
     [Header("Enemy Movement Settings")]
     public EnemyDetails enemyDetailsSO;
+    public Transform detectionPoint;
+    public LayerMask playerLayer;
+
     private Transform player;    
     private Rigidbody2D rb;
     private Animator anim;
@@ -24,25 +27,42 @@ public class Enemy_Movement : MonoBehaviour
     }
     private void Update()
     {
+        checkForPlayer();
+        if(enemyDetailsSO.attackCooldownTimer > 0)
+        {
+            enemyDetailsSO.attackCooldownTimer -= Time.deltaTime;
+        }
         if(enemyState == EnemyState.Chasing)
         {
-            if (player.position.x > transform.position.x && facingDirection == -1||
+            chase();
+        }
+        else if(enemyState == EnemyState.Attacking)
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+    private void chase()
+    {
+        if (enemyState == EnemyState.Chasing)
+        {
+            if (player.position.x > transform.position.x && facingDirection == -1 ||
                 player.position.x < transform.position.x && facingDirection == 1)
             {
                 flip();
             }
             Vector2 direction = (player.position - transform.position).normalized;
             rb.velocity = direction * enemyDetailsSO.enemySpeed;
-        }        
+        }
     }
     private void flip()
     {
         facingDirection *= -1;
         transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
     }
+    #region StateMachine
     private void changeState(EnemyState newState)
     {
-        //Exit current state
+        #region Exit current state
         if (enemyState == EnemyState.Idle)
         {
             anim.SetBool("isIdle", false);
@@ -51,39 +71,49 @@ public class Enemy_Movement : MonoBehaviour
         {
             anim.SetBool("isChasing", false);
         }
+        else if (enemyState == EnemyState.Attacking)
+        {
+            anim.SetBool("isAttacking", false);
+        }
+        #endregion
         //Update new enemy state
         enemyState = newState;
         //Enter new state
-        if (enemyState == EnemyState.Idle)
-        {
-            anim.SetBool("isIdle", true);
-        }
-        else if (enemyState == EnemyState.Chasing)
-        {
-            anim.SetBool("isChasing", true);
-        }
-    }
-    #region OnTrigger Methods
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if(player == null)
-            {
-                player = collision.transform;
-            }
-            changeState(EnemyState.Chasing);
-        }      
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            rb.velocity = Vector2.zero;;
-            changeState(EnemyState.Idle);
-        }
+        anim.SetBool("isIdle", enemyState == EnemyState.Idle);
+        anim.SetBool("isChasing", enemyState == EnemyState.Chasing);
+        anim.SetBool("isAttacking", enemyState == EnemyState.Attacking);
     }
     #endregion
-    
+    #region Check for player 
+    private void checkForPlayer()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position ,enemyDetailsSO.enemyDetectionRange, playerLayer);
+        if (hits.Length > 0)
+        {
+            player = hits[0].transform;
+
+            if (Vector2.Distance(transform.position, player.position) <= enemyDetailsSO.attackRange
+                && enemyDetailsSO.attackCooldownTimer <= 0)
+            {
+                enemyDetailsSO.attackCooldownTimer = enemyDetailsSO.attackCooldown;
+                changeState(EnemyState.Attacking);
+            }
+            else if (Vector2.Distance(transform.position, player.position) > enemyDetailsSO.attackRange)
+            {
+                changeState(EnemyState.Chasing);
+            }
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            changeState(EnemyState.Idle);
+        }           
+    }
+    #endregion
+    private void OnDrawGizmosSelected()
+    {   
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(detectionPoint.position, enemyDetailsSO.enemyDetectionRange);
+    }
 }
 

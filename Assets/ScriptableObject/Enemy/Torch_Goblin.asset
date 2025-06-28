@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: Torch_Goblin
   m_EditorClassIdentifier: 
   enemyName: Torch Goblin
-  enemyDamage: 8
-  enemyMaxHealth: 10
-  attackRange: 0
-  attackCooldown: 0
   enemySpeed: 3
-  chaseRange: 2
-  isChasing: 1
-  timeOutOfRange: 0
-  stopChaseTime: 3
-  isTouchingPlayer: 0
+  enemyDetectionRange: 3
+  enemyDamage: 5
+  enemyMaxHealth: 10
+  attackRange: 1.2
+  attackCooldown: 2
+  attackCooldownTimer: 0.056291334
+  weaponRange: 0
