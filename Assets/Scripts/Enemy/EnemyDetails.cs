@@ -21,9 +21,8 @@ namespace Snorx.EnemyData
         public float attackCooldown;
         public float attackCooldownTimer;
         public float weaponRange;
-
-        
-       
+        public float knockBackForce;
+        public float stunTime;
     }
 }
 

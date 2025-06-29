@@ -19,5 +19,7 @@ MonoBehaviour:
   enemyMaxHealth: 10
   attackRange: 1.2
   attackCooldown: 2
-  attackCooldownTimer: 0.056291334
-  weaponRange: 0
+  attackCooldownTimer: -0.000099305296
+  weaponRange: 1
+  knockBackForce: 5
+  stunTime: 0.5

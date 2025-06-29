@@ -12,8 +12,7 @@ namespace Snorx.Data
         public float playerSpeed = 5f;
         public int playerMaxHealth = 100;
         public GameObject playerPrefab; 
-        public float ImmuneTime = 1f;
-        public bool isImmuneAfterHit;
+        private bool Knockack;
     }
 }
 
