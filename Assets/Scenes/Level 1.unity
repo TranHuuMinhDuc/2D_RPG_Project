@@ -237,6 +237,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &456121929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2649253453992278287, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
+  m_PrefabInstance: {fileID: 7389055675385917577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1211,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6524708175095753252, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
   m_PrefabInstance: {fileID: 7389055675385917577}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1516345974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2656179603890676144, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
+  m_PrefabInstance: {fileID: 7389055675385917577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456121929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c613b57315f03d24f95f3fe9bcd375a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1516345975 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 361933229928475569, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
+  m_PrefabInstance: {fileID: 7389055675385917577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1516345980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456121929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec89ca9f3d0c8d34d93e2b624eafa8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1516345974}
+  anim: {fileID: 1516345975}
 --- !u!1 &1714720890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[12].second.m_AnimationSpeed
-      value: 5
+      value: 5.0000005
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[13].second.m_AnimationSpeed
@@ -1830,7 +1865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[29].second.m_AnimationSpeed
-      value: 5
+      value: 5.0000005
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[30].second.m_AnimationSpeed
@@ -1850,7 +1885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[34].second.m_AnimationSpeed
-      value: 5
+      value: 5.0000005
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[35].second.m_AnimationSpeed
@@ -2216,7 +2251,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2649253453992278287, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1516345980}
   m_SourcePrefab: {fileID: 100100000, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
