@@ -16,9 +16,10 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private PlayerState playerState;
     private bool isKnockedBack;
-    private bool isAttacking;
     public Player_Combat playerCombat;
 
+
+    private float attackTimer;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -70,7 +71,10 @@ public class Player : MonoBehaviour
                 changePlayerState(PlayerState.Running);
             }
         }
-        
+        if(attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -93,6 +97,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    #region State Machine
     public void changePlayerState(PlayerState newState)
     {
         anim.SetBool("isIdle", false);
@@ -111,19 +116,12 @@ public class Player : MonoBehaviour
                 break;
             case PlayerState.Attacking:
                 anim.SetBool("isAttacking", true);
-                StartCoroutine(EndAttackAnimation());
                 break;
         }
     }
-
-    public void knockBack(Transform enemy, float force, float stunTime)
-    {
-        isKnockedBack = true;
-        Vector2 direction = (transform.position - enemy.position).normalized;
-        rb.velocity = direction * force;
-        StartCoroutine(knockBackCounter(stunTime));
-    }
-
+    #endregion
+    
+    #region IEnumerators
     IEnumerator knockBackCounter(float stunTime)
     {
         yield return new WaitForSeconds(1);
@@ -132,7 +130,11 @@ public class Player : MonoBehaviour
     }
     IEnumerator performAttack( )
     {
-        changePlayerState(PlayerState.Attacking);
+        if(attackTimer <= 0)
+        {
+            changePlayerState(PlayerState.Attacking);
+            attackTimer = playerDetailsSO.attackCoolDown;
+        }      
         yield return new WaitForSeconds(0.5f);
         if (moveInput == Vector2.zero)
         {
@@ -143,13 +145,20 @@ public class Player : MonoBehaviour
             changePlayerState(PlayerState.Running);
         }
     }
-    IEnumerator EndAttackAnimation()
+    #endregion
+    public void EndAttackAnimation()
     {
-        yield return new WaitForSeconds(1);
         if (playerState == PlayerState.Attacking)
         {
-            changePlayerState(moveInput == Vector2.zero ? PlayerState.Idle : PlayerState.Running);
+            anim.SetBool("isAttacking", false);
         }
+    }
+    public void knockBack(Transform enemy, float force, float stunTime)
+    {
+        isKnockedBack = true;
+        Vector2 direction = (transform.position - enemy.position).normalized;
+        rb.velocity = direction * force;
+        StartCoroutine(knockBackCounter(stunTime));
     }
 
 }
