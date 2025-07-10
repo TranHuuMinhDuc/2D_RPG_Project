@@ -10,16 +10,18 @@ public class Player : MonoBehaviour
     [SerializeField] public PlayerDetails playerDetailsSO;
     [SerializeField] private Camera mainCamera;
     public Animator anim;
-
-    private Rigidbody2D rb;
-    private PlayerInputSystem playerInput;
-    private Vector2 moveInput;
-    private PlayerState playerState;
-    private bool isKnockedBack;
     public Player_Combat playerCombat;
 
+    private PlayerInputSystem playerInput;
+    private PlayerState playerState;
 
-    private float attackTimer;
+    #region Parameters
+    public Vector2 moveInput { get; private set; }
+    public Rigidbody2D rb { get; private set; }
+    
+    
+    #endregion
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,19 +33,19 @@ public class Player : MonoBehaviour
     #region InputSystem
     private void OnEnable()
     {
-        playerInput.Enable();
         playerInput.Player.Move.performed += onMove;
         playerInput.Player.Move.canceled += onMove;
         playerInput.Player.Attack.performed += onAttack;
         playerInput.Player.Attack.canceled += onAttack;
+        playerInput.Enable();
     }
     private void OnDisable()
     {
-        playerInput.Disable();
         playerInput.Player.Move.performed -= onMove;
         playerInput.Player.Move.canceled -= onMove;
         playerInput.Player.Attack.performed -= onAttack;
         playerInput.Player.Attack.canceled -= onAttack;
+        playerInput.Disable();
     }
     private void onMove(InputAction.CallbackContext context)
     {
@@ -52,15 +54,15 @@ public class Player : MonoBehaviour
     #endregion
     private void onAttack(InputAction.CallbackContext context)
     {
-        if (!isKnockedBack)
+        if (!playerCombat.isKnockedBack && !playerCombat.isAttacking && playerCombat.attackTimer <= 0)
         {
-            StartCoroutine(performAttack());
+            StartCoroutine(playerCombat.performAttack());
         }
     }
     private void Update()
     {
         playerFacing();
-        if(isKnockedBack == false)
+        if(!playerCombat.isKnockedBack && !playerCombat.isAttacking)
         {
             if (playerState == PlayerState.Running && moveInput == Vector2.zero)
             {
@@ -71,15 +73,15 @@ public class Player : MonoBehaviour
                 changePlayerState(PlayerState.Running);
             }
         }
-        if(attackTimer > 0)
+        if(playerCombat.attackTimer > 0)
         {
-            attackTimer -= Time.deltaTime;
+            playerCombat.attackTimer -= Time.deltaTime;
         }
     }
 
     private void FixedUpdate()
     {
-        if(isKnockedBack == false)
+        if(!playerCombat.isKnockedBack && !playerCombat.isAttacking)
         {
             rb.velocity = moveInput.normalized * playerDetailsSO.playerSpeed;
         }       
@@ -120,45 +122,4 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
-    
-    #region IEnumerators
-    IEnumerator knockBackCounter(float stunTime)
-    {
-        yield return new WaitForSeconds(1);
-        rb.velocity = Vector2.zero;
-        isKnockedBack = false;
-    }
-    IEnumerator performAttack( )
-    {
-        if(attackTimer <= 0)
-        {
-            changePlayerState(PlayerState.Attacking);
-            attackTimer = playerDetailsSO.attackCoolDown;
-        }      
-        yield return new WaitForSeconds(0.5f);
-        if (moveInput == Vector2.zero)
-        {
-            changePlayerState(PlayerState.Idle);
-        }
-        else
-        {
-            changePlayerState(PlayerState.Running);
-        }
-    }
-    #endregion
-    public void EndAttackAnimation()
-    {
-        if (playerState == PlayerState.Attacking)
-        {
-            anim.SetBool("isAttacking", false);
-        }
-    }
-    public void knockBack(Transform enemy, float force, float stunTime)
-    {
-        isKnockedBack = true;
-        Vector2 direction = (transform.position - enemy.position).normalized;
-        rb.velocity = direction * force;
-        StartCoroutine(knockBackCounter(stunTime));
-    }
-
 }

@@ -6,6 +6,7 @@ using Snorx.EnemyData;
 public class Enemy_Combat : MonoBehaviour
 {
     public EnemyDetails EnemyDetailsSO;
+    private Player_Combat playerCombat;
     public Transform attackPoint;
     public LayerMask playerLayer;
 
@@ -15,7 +16,7 @@ public class Enemy_Combat : MonoBehaviour
         if(hits.Length > 0)
         {
             hits[0].GetComponent<PlayerHealth>().changeHealth(-EnemyDetailsSO.enemyDamage);
-            hits[0].GetComponent<Player>().knockBack(transform, EnemyDetailsSO.knockBackForce, EnemyDetailsSO.stunTime);
+            hits[0].GetComponent<Player_Combat>().knockBack(transform, EnemyDetailsSO.knockBackForce, EnemyDetailsSO.stunTime);
         }
     }
 }

@@ -11,8 +11,11 @@ namespace Snorx.Data
         public string playerName;
         public float playerSpeed = 5f;
         public int playerMaxHealth = 100;
-        private bool Knockack;
+        public int playerDamage = 1;
         public float attackCoolDown;
+
+        public bool isKnockedBack;
+        public bool isAttacking;
     }
 }
 

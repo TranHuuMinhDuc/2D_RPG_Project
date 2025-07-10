@@ -15,7 +15,11 @@ public class EnemyHealth : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
-        if (currentHealth <= 0)
+        if (currentHealth > enemyDetailsSO.enemyMaxHealth)
+        {
+            currentHealth = enemyDetailsSO.enemyMaxHealth;
+        }
+        else if(currentHealth <= 0)
         {
             Destroy(gameObject);
         }

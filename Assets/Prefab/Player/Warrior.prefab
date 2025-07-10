@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 361933229928475569}
   - component: {fileID: 2656179603890676144}
   - component: {fileID: 4173459377209768138}
+  - component: {fileID: 2335276792749642687}
   m_Layer: 7
   m_Name: Warrior
   m_TagString: Player
@@ -35,7 +36,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7184706663101759686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &838859142475746888
@@ -217,7 +219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDetailsSO: {fileID: 11400000, guid: 25138e763e930d449aab36daf00a7288, type: 2}
   mainCamera: {fileID: 0}
-  animator: {fileID: 361933229928475569}
+  anim: {fileID: 361933229928475569}
+  playerCombat: {fileID: 2335276792749642687}
 --- !u!114 &4173459377209768138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,3 +236,54 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   PlayerDetailsSO: {fileID: 11400000, guid: 25138e763e930d449aab36daf00a7288, type: 2}
+--- !u!114 &2335276792749642687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649253453992278287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec89ca9f3d0c8d34d93e2b624eafa8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSO: {fileID: 2656179603890676144}
+  playerDetailsSO: {fileID: 11400000, guid: 25138e763e930d449aab36daf00a7288, type: 2}
+  attackPoint: {fileID: 0}
+  weaponRange: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attackTimer: 0
+--- !u!1 &3604274655855621117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7184706663101759686}
+  m_Layer: 7
+  m_Name: AttackPont
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7184706663101759686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604274655855621117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.527, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6524708175095753252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
