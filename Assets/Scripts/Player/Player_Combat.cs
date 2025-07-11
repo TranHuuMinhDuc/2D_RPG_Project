@@ -35,6 +35,7 @@ public class Player_Combat : MonoBehaviour
             if (enemies.Length > 0)
             {
                 enemies[0].GetComponent<EnemyHealth>().ChangeHealth(-(playerDetailsSO.playerDamage));
+                enemies[0].GetComponent<Enemy_KnockBack>().enemyKnockedBack(transform, playerDetailsSO.knockBackForce, playerDetailsSO.enemyStunTime);
             }
             attackTimer = playerDetailsSO.attackCoolDown;
         }
@@ -45,7 +46,7 @@ public class Player_Combat : MonoBehaviour
         isAttacking = false;
         if (playerSO.moveInput == Vector2.zero)
         {
-            playerSO.changePlayerState(PlayerState.Idle);
+            playerSO.changePlayerState(PlayerState.Idle);   
         }
         else
         {
@@ -60,7 +61,7 @@ public class Player_Combat : MonoBehaviour
             playerSO.anim.SetBool("isAttacking", false);
         }
     }
-    public void knockBack(Transform enemy, float force, float stunTime)
+    public void playerKnockedBack(Transform enemy, float force, float stunTime)
     {
         isKnockedBack = true;
         Vector2 direction = (transform.position - enemy.position).normalized;

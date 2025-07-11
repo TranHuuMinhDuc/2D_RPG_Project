@@ -27,19 +27,22 @@ public class Enemy_Movement : MonoBehaviour
     }
     private void Update()
     {
-        checkForPlayer();
-        if(enemyDetailsSO.attackCooldownTimer > 0)
+        if(enemyState != EnemyState.KnockedBack)
         {
-            enemyDetailsSO.attackCooldownTimer -= Time.deltaTime;
-        }
-        if(enemyState == EnemyState.Chasing)
-        {
-            chase();
-        }
-        else if(enemyState == EnemyState.Attacking)
-        {
-            rb.velocity = Vector2.zero;
-        }
+            checkForPlayer();
+            if (enemyDetailsSO.attackCooldownTimer > 0)
+            {
+                enemyDetailsSO.attackCooldownTimer -= Time.deltaTime;
+            }
+            if (enemyState == EnemyState.Chasing)
+            {
+                chase();
+            }
+            else if (enemyState == EnemyState.Attacking)
+            {
+                rb.velocity = Vector2.zero;
+            }
+        }         
     }
     private void chase()
     {
@@ -60,7 +63,7 @@ public class Enemy_Movement : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
     }
     #region StateMachine
-    private void changeState(EnemyState newState)
+    public void changeState(EnemyState newState)
     {
         #region Exit current state
         if (enemyState == EnemyState.Idle)

@@ -5,6 +5,7 @@ namespace Snorx.Enum
         Idle,
         Chasing,
         Attacking,
+        KnockedBack,
         Die,
     }
     public enum PlayerState

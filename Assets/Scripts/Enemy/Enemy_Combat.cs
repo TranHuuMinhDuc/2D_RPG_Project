@@ -16,7 +16,7 @@ public class Enemy_Combat : MonoBehaviour
         if(hits.Length > 0)
         {
             hits[0].GetComponent<PlayerHealth>().changeHealth(-EnemyDetailsSO.enemyDamage);
-            hits[0].GetComponent<Player_Combat>().knockBack(transform, EnemyDetailsSO.knockBackForce, EnemyDetailsSO.stunTime);
+            hits[0].GetComponent<Player_Combat>().playerKnockedBack(transform, EnemyDetailsSO.knockBackForce, EnemyDetailsSO.playerStunTime);
         }
     }
 }
