@@ -23,7 +23,7 @@ public class Enemy_Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        changeState(EnemyState.Idle);
+        SetAnimationForState(EnemyState.Idle, true);
     }
     private void Update()
     {
@@ -63,30 +63,35 @@ public class Enemy_Movement : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
     }
     #region StateMachine
+
     public void changeState(EnemyState newState)
     {
-        #region Exit current state
-        if (enemyState == EnemyState.Idle)
-        {
-            anim.SetBool("isIdle", false);
-        }
-        else if (enemyState == EnemyState.Chasing)
-        {
-            anim.SetBool("isChasing", false);
-        }
-        else if (enemyState == EnemyState.Attacking)
-        {
-            anim.SetBool("isAttacking", false);
-        }
-        #endregion
-        //Update new enemy state
+        if (enemyState == newState) return;
+
+        SetAnimationForState(enemyState, false);    //Exit current state animation
         enemyState = newState;
-        //Enter new state
-        anim.SetBool("isIdle", enemyState == EnemyState.Idle);
-        anim.SetBool("isChasing", enemyState == EnemyState.Chasing);
-        anim.SetBool("isAttacking", enemyState == EnemyState.Attacking);
+        SetAnimationForState(enemyState, true);
     }
+
+
+    private void SetAnimationForState(EnemyState state, bool value)
+    {
+        switch (state)
+        {
+            case EnemyState.Idle:
+                anim.SetBool("isIdle", value);
+                break;
+            case EnemyState.Chasing:
+                anim.SetBool("isChasing", value);
+                break;
+            case EnemyState.Attacking:
+                anim.SetBool("isAttacking", value);
+                break;
+        }
+    }
+
     #endregion
+
     #region Check for player 
     private void checkForPlayer()
     {
