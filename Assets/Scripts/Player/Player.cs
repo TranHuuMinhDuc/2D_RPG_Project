@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     #endregion
     private void onAttack(InputAction.CallbackContext context)
     {
-        if (!playerCombat.isKnockedBack && !playerCombat.isAttacking && playerCombat.attackTimer <= 0)
+        if (!StatManager.instance.isKnockedBackSM && !StatManager.instance.isAttackingSM && playerCombat.attackTimer <= 0)
         {
             StartCoroutine(playerCombat.performAttack());
         }
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         playerFacing();
-        if(!playerCombat.isKnockedBack && !playerCombat.isAttacking)
+        if(!StatManager.instance.isKnockedBackSM && !StatManager.instance.isAttackingSM)
         {
             if (playerState == PlayerState.Running && moveInput == Vector2.zero)
             {
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!playerCombat.isKnockedBack && !playerCombat.isAttacking)
+        if(!StatManager.instance.isKnockedBackSM && !StatManager.instance.isAttackingSM)
         {
             rb.velocity = moveInput.normalized * playerDetailsSO.playerSpeed;
         }       

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int currentHealth;
+
     public Slider healthSlider;
     public PlayerDetails PlayerDetailsSO;
 
     private void Start()
     {
-        currentHealth = PlayerDetailsSO.playerMaxHealth;
+        StatManager.instance.currentPlayerHealthSM = PlayerDetailsSO.playerMaxHealth;
     }
     private void Update()
     {
@@ -20,12 +20,13 @@ public class PlayerHealth : MonoBehaviour
     }
     public void changeHealth(int amount)
     {
-        currentHealth += amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, PlayerDetailsSO.playerMaxHealth);
+        StatManager.instance.currentPlayerHealthSM += amount;
+        StatManager.instance.currentPlayerHealthSM = Mathf.Clamp(StatManager.instance.currentPlayerHealthSM, 0,
+            StatManager.instance.currentPlayerMaxHealth);
     }
     private void updateHealthUI()
     {
         healthSlider.maxValue = PlayerDetailsSO.playerMaxHealth;
-        healthSlider.value = currentHealth;
+        healthSlider.value = StatManager.instance.currentPlayerHealthSM;
     }
 }

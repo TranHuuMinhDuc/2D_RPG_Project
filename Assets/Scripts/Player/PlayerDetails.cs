@@ -9,14 +9,23 @@ namespace Snorx.Data
     {
         [Header("Player Details")]
         public string playerName;
+        public int playerLevel = 1;
+
+        [Header("Player Movement Details")]
         public float playerSpeed = 5f;
 
-        [Header("Player Combat Details")]
+        [Header("Player Health Details")]
         public int playerMaxHealth = 100;
+        public int currentPlayerHealth;
+
+        [Header("Player Combat Details")]
         public int playerDamage = 1;
-        public float attackCoolDown;
+        public float attackCoolDown = 1f;
         public float knockBackForce = 5f;
         public float enemyStunTime = 1f;
+        public float weaponRange     = 1;
+
+        [Header("Player State Details")]
         public bool isKnockedBack;
         public bool isAttacking;
     }

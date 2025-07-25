@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc86ea7c49407846ab0a6762866c12a, type: 3}
   m_Name: WarriorDetails
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Warrior
+  playerLevel: 1
   playerSpeed: 5
   playerMaxHealth: 20
+  currentPlayerHealth: 0
   playerDamage: 1
   attackCoolDown: 1.2
+  knockBackForce: 5
+  enemyStunTime: 1
+  weaponRange: 1
   isKnockedBack: 0
   isAttacking: 0
