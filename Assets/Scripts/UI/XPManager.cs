@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+
+public class XPManager : MonoBehaviour
+{
+    public int currentXP;
+    public int expForNextLevel = 10;
+    public float expMultiplier = 1.2f;
+    public Slider expSlide;
+    public TMP_Text currentLevelText;
+
+    private void Start()
+    {
+        updateExpUI();
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.X)) 
+        {
+            gainExp(10);
+        }
+    }
+
+    public void gainExp(int amount)
+    {
+        currentXP += amount;
+        if (currentXP >= expForNextLevel)
+        {
+            levelUp();
+        }
+        updateExpUI();
+    }
+    public void levelUp()
+    {
+        currentXP -= expForNextLevel;
+        StatManager.instance.currentPlayerLevel++;
+        expForNextLevel = Mathf.RoundToInt(expForNextLevel * expMultiplier);
+    }
+    public void updateExpUI()
+    {
+        expSlide.value = expForNextLevel;
+        expSlide.value = currentXP;
+        currentLevelText.text = "Level: " + StatManager.instance.currentPlayerLevel;
+    }
+}

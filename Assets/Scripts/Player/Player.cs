@@ -7,7 +7,6 @@ using Snorx.Enum;
 public class Player : MonoBehaviour
 {
     [Header("Player Settings")]
-    [SerializeField] public PlayerDetails playerDetailsSO;
     [SerializeField] private Camera mainCamera;
     public Animator anim;
     public Player_Combat playerCombat;
@@ -17,9 +16,7 @@ public class Player : MonoBehaviour
 
     #region Parameters
     public Vector2 moveInput { get; private set; }
-    public Rigidbody2D rb { get; private set; }
-    
-    
+    public Rigidbody2D rb { get; private set; }  
     #endregion
 
     private void Awake()
@@ -83,7 +80,7 @@ public class Player : MonoBehaviour
     {
         if(!StatManager.instance.isKnockedBackSM && !StatManager.instance.isAttackingSM)
         {
-            rb.velocity = moveInput.normalized * playerDetailsSO.playerSpeed;
+            rb.velocity = moveInput.normalized * StatManager.instance.currentPlayerSpeed;
         }       
     } 
 

@@ -7,12 +7,13 @@ using UnityEngine;
 public class Player_Combat : MonoBehaviour
 {
     public Player playerSO;
-    public PlayerDetails playerDetailsSO;
     public Transform attackPoint;
     public LayerMask enemyLayer;
+    public float testWeaponRange = 1;
+    public StatsUI statsUI;
+    public float attackTimer;
 
     private PlayerState playerState;
-    public float attackTimer;
 
     #region IEnumerators
     public IEnumerator knockBackCounter(float stunTime)
@@ -69,6 +70,6 @@ public class Player_Combat : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, StatManager.instance.weaponRangeSM);
+        Gizmos.DrawWireSphere(attackPoint.position, testWeaponRange);
     }
 }

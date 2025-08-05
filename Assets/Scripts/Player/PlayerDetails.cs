@@ -16,7 +16,6 @@ namespace Snorx.Data
 
         [Header("Player Health Details")]
         public int playerMaxHealth = 100;
-        public int currentPlayerHealth;
 
         [Header("Player Combat Details")]
         public int playerDamage = 1;

@@ -19,7 +19,7 @@ public class StatManager : MonoBehaviour
 
     [Header("Player Health Details")]
     public int currentPlayerMaxHealth;
-    public int currentPlayerHealthSM;
+    public int currentPlayerHealth;
 
     [Header("Player Combat Details")]
     public int currentPlayerDamage;
@@ -32,13 +32,10 @@ public class StatManager : MonoBehaviour
     public bool isKnockedBackSM;
     public bool isAttackingSM;
 
-    public void Start()
-    {
-        loadBaseStat();
-    }
     private void Awake()
     {
-        if(instance == null)
+        loadBaseStat();
+        if (instance == null)
         {
             instance = this;
         }
@@ -54,7 +51,7 @@ public class StatManager : MonoBehaviour
         currentPlayerLevel = baseStat.playerLevel;
         currentPlayerSpeed = baseStat.playerSpeed;
         currentPlayerMaxHealth = baseStat.playerMaxHealth;
-        currentPlayerHealthSM = baseStat.currentPlayerHealth;
+        currentPlayerHealth = baseStat.playerMaxHealth;
         currentPlayerDamage = baseStat.playerDamage;
         attackCoolDownSM = baseStat.attackCoolDown;
         knockBackForceSM = baseStat.knockBackForce;

@@ -8,25 +8,20 @@ public class PlayerHealth : MonoBehaviour
 {
 
     public Slider healthSlider;
-    public PlayerDetails PlayerDetailsSO;
-
-    private void Start()
-    {
-        StatManager.instance.currentPlayerHealthSM = PlayerDetailsSO.playerMaxHealth;
-    }
+    
     private void Update()
     {
         updateHealthUI();
     }
-    public void changeHealth(int amount)
+    public void changeHealth(int amount)    
     {
-        StatManager.instance.currentPlayerHealthSM += amount;
-        StatManager.instance.currentPlayerHealthSM = Mathf.Clamp(StatManager.instance.currentPlayerHealthSM, 0,
+        StatManager.instance.currentPlayerHealth += amount;
+        StatManager.instance.currentPlayerHealth = Mathf.Clamp(StatManager.instance.currentPlayerHealth, 0,
             StatManager.instance.currentPlayerMaxHealth);
     }
     private void updateHealthUI()
     {
-        healthSlider.maxValue = PlayerDetailsSO.playerMaxHealth;
-        healthSlider.value = StatManager.instance.currentPlayerHealthSM;
+        healthSlider.maxValue = StatManager.instance.currentPlayerMaxHealth;
+        healthSlider.value = StatManager.instance.currentPlayerHealth;
     }
 }
