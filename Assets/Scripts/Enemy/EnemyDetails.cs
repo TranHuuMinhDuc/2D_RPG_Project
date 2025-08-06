@@ -9,6 +9,7 @@ namespace Snorx.EnemyData
     {
         [Header("Enemy Details")]
         public string enemyName;
+        public int enemyExpDrop;
 
         [Header("Enemy Movement")]
         public float enemySpeed;

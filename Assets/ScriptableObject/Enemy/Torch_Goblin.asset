@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Torch_Goblin
   m_EditorClassIdentifier: 
   enemyName: Torch Goblin
+  enemyExpDrop: 2
   enemySpeed: 3
   enemyDetectionRange: 3
   enemyDamage: 2
   enemyMaxHealth: 10
   attackRange: 1.2
   attackCooldown: 2
-  attackCooldownTimer: -0.000099305296
+  attackCooldownTimer: -0.003867459
   weaponRange: 1
   knockBackForce: 5
   playerStunTime: 0

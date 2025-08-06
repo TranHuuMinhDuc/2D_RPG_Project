@@ -17,20 +17,21 @@ public class XPManager : MonoBehaviour
     {
         updateExpUI();
     }
-    private void Update()
+    private void OnEnable()
     {
-        if(Input.GetKeyDown(KeyCode.X)) 
-        {
-            gainExp(10);
-        }
+        EnemyHealth.onEnemyDeathEXP += gainExp;
     }
-
+    private void OnDisable()
+    {
+        EnemyHealth.onEnemyDeathEXP -= gainExp;
+    }
     public void gainExp(int amount)
     {
         currentXP += amount;
         if (currentXP >= expForNextLevel)
         {
             levelUp();
+            expSlide.maxValue = expForNextLevel;
         }
         updateExpUI();
     }
