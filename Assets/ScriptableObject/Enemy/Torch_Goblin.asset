@@ -17,7 +17,7 @@ MonoBehaviour:
   enemySpeed: 3
   enemyDetectionRange: 3
   enemyDamage: 2
-  enemyMaxHealth: 10
+  enemyMaxHealth: 5
   attackRange: 1.2
   attackCooldown: 2
   attackCooldownTimer: -0.003867459

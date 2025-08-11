@@ -28,13 +28,6 @@ public class Player_Combat : MonoBehaviour
         if (attackTimer <= 0)
         {
             playerSO.changePlayerState(PlayerState.Attacking);
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, StatManager.instance.weaponRangeSM, enemyLayer);
-            if (enemies.Length > 0)
-            {
-                enemies[0].GetComponent<EnemyHealth>().ChangeHealth(-(StatManager.instance.currentPlayerDamage));
-                enemies[0].GetComponent<Enemy_KnockBack>().enemyKnockedBack(transform,
-                    StatManager.instance.knockBackForceSM, StatManager.instance.enemyStunTimeSM);
-            }
             attackTimer = StatManager.instance.attackCoolDownSM;
         }
         playerSO.rb.velocity = Vector2.zero;
@@ -49,6 +42,16 @@ public class Player_Combat : MonoBehaviour
         else
         {
             playerSO.changePlayerState(PlayerState.Running);
+        }
+    }
+    public void DealDamage()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, StatManager.instance.weaponRangeSM, enemyLayer);
+        if (enemies.Length > 0)
+        {
+            enemies[0].GetComponent<EnemyHealth>().ChangeHealth(-(StatManager.instance.currentPlayerDamage));
+            enemies[0].GetComponent<Enemy_KnockBack>().enemyKnockedBack(transform,
+                StatManager.instance.knockBackForceSM, StatManager.instance.enemyStunTimeSM);
         }
     }
     #endregion
