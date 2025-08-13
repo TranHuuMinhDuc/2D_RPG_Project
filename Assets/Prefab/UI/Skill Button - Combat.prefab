@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/5
+  m_text: Locked
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91acfe485c0a8704e8282578e4cd1354, type: 2}
   m_sharedMaterial: {fileID: 7787991450651661725, guid: 91acfe485c0a8704e8282578e4cd1354, type: 2}
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 50.544006, y: 80.08502, z: 0, w: 0}
+  m_margin: {x: 46.97927, y: 80.08502, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7216802248838084629}
   - component: {fileID: 2883039596906299728}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: Skill Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -244,8 +244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25, y: 10}
-  m_SizeDelta: {x: 50, y: 20}
+  m_AnchoredPosition: {x: -26, y: 10}
+  m_SizeDelta: {x: 52, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5897494272455447348
 CanvasRenderer:
@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 7066252588368692094}
   - component: {fileID: 5354957306697650264}
   - component: {fileID: 1518412084638246673}
+  - component: {fileID: 7593127079290401212}
   m_Layer: 5
   m_Name: Skill Button - Combat
   m_TagString: Untagged
@@ -402,8 +403,26 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5354957306697650264}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7593127079290401212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7176517475290937964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46253af3f6841346a1fc432ba4610fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillDetailsSO: {fileID: 11400000, guid: 8e5d8844cec6d2e4eb22b1c194350ff0, type: 2}
+  currentSkillLevel: 0
+  isSkillUnlocked: 0
+  skillIcon: {fileID: 2883039596906299728}
+  skillLevelText: {fileID: 3209700737290290396}
+  skillButton: {fileID: 1518412084638246673}
