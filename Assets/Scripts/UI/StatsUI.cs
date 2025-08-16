@@ -52,7 +52,7 @@ public class StatsUI : MonoBehaviour
         statsSlot[0].GetComponentInChildren<TMP_Text>().text = "Damage: " + StatManager.instance.currentPlayerDamage;
         statsSlot[1].GetComponentInChildren<TMP_Text>().text = "Speed: " + StatManager.instance.currentPlayerSpeed;
     }
-    private void pauseGame(bool isToggleStatsOn)
+    public void pauseGame(bool isToggleStatsOn)
     {
         if(isToggleStatsOn)
         {

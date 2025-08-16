@@ -127,6 +127,15 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skills Tree"",
+                    ""type"": ""Button"",
+                    ""id"": ""6424c2cf-dbc2-48bc-bc7b-315ab361ef1b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -138,6 +147,17 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Stats Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e093f1a2-2011-4b7e-945a-309f9b34e372"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skills Tree"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -153,6 +173,7 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_StatsMenu = m_UI.FindAction("Stats Menu", throwIfNotFound: true);
+        m_UI_SkillsTree = m_UI.FindAction("Skills Tree", throwIfNotFound: true);
     }
 
     ~@PlayerInputSystem()
@@ -275,11 +296,13 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_StatsMenu;
+    private readonly InputAction m_UI_SkillsTree;
     public struct UIActions
     {
         private @PlayerInputSystem m_Wrapper;
         public UIActions(@PlayerInputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @StatsMenu => m_Wrapper.m_UI_StatsMenu;
+        public InputAction @SkillsTree => m_Wrapper.m_UI_SkillsTree;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,6 +315,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @StatsMenu.started += instance.OnStatsMenu;
             @StatsMenu.performed += instance.OnStatsMenu;
             @StatsMenu.canceled += instance.OnStatsMenu;
+            @SkillsTree.started += instance.OnSkillsTree;
+            @SkillsTree.performed += instance.OnSkillsTree;
+            @SkillsTree.canceled += instance.OnSkillsTree;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -299,6 +325,9 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
             @StatsMenu.started -= instance.OnStatsMenu;
             @StatsMenu.performed -= instance.OnStatsMenu;
             @StatsMenu.canceled -= instance.OnStatsMenu;
+            @SkillsTree.started -= instance.OnSkillsTree;
+            @SkillsTree.performed -= instance.OnSkillsTree;
+            @SkillsTree.canceled -= instance.OnSkillsTree;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -324,5 +353,6 @@ public partial class @PlayerInputSystem: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnStatsMenu(InputAction.CallbackContext context);
+        void OnSkillsTree(InputAction.CallbackContext context);
     }
 }

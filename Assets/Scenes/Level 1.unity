@@ -990,6 +990,10 @@ PrefabInstance:
       value: Skill Button - Combat (5)
       objectReference: {fileID: 0}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f847ca0266f1ee94a90c58d55337a7f5, type: 2}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: prerequisiteSkillSlot.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1744,6 +1748,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bce9fd1ec2534f40aef8215d150039c, type: 2}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: prerequisiteSkillSlot.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1805,6 +1813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3dfaeef190c8154c9ab2104cbd853ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbar: {fileID: 1409686144}
+  playerHealth: {fileID: 7389055675385917578}
   baseStat: {fileID: 11400000, guid: 25138e763e930d449aab36daf00a7288, type: 2}
   playerNameSM: 
   currentPlayerLevel: 0
@@ -2665,6 +2675,10 @@ PrefabInstance:
       value: Skill Button - Combat (11)
       objectReference: {fileID: 0}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f847ca0266f1ee94a90c58d55337a7f5, type: 2}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: prerequisiteSkillSlot.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2778,6 +2792,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bce9fd1ec2534f40aef8215d150039c, type: 2}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: prerequisiteSkillSlot.Array.size
       value: 1
@@ -3827,6 +3845,10 @@ PrefabInstance:
       value: Skill Button - Combat (8)
       objectReference: {fileID: 0}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f847ca0266f1ee94a90c58d55337a7f5, type: 2}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: prerequisiteSkillSlot.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4052,6 +4074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill Button - Combat (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f847ca0266f1ee94a90c58d55337a7f5, type: 2}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: isSkillUnlocked
       value: 1
@@ -4281,6 +4307,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bce9fd1ec2534f40aef8215d150039c, type: 2}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: isSkillUnlocked
       value: 1
@@ -4971,6 +5001,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bce9fd1ec2534f40aef8215d150039c, type: 2}
+    - target: {fileID: 7593127079290401212, guid: c78a533cdce847644beabfab8f8417d9, type: 3}
       propertyPath: prerequisiteSkillSlot.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5010,6 +5044,7 @@ GameObject:
   - component: {fileID: 1737929564}
   - component: {fileID: 1737929566}
   - component: {fileID: 1737929565}
+  - component: {fileID: 1737929567}
   m_Layer: 5
   m_Name: Skills Tree Manager
   m_TagString: Untagged
@@ -5049,8 +5084,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19b9f22f87944e4e901ea4b28befb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avaliableSkillPoints: 5
+  skillsTreePanel: {fileID: 2003901224}
+  avaliableSkillPoints: 10
   skillPointText: {fileID: 1424431072}
+  statsUI: {fileID: 979023800}
   skillsSlots:
   - {fileID: 1722263964}
   - {fileID: 1757709798}
@@ -5088,6 +5125,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1737929567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737929563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5309278e79ab7f42a45e8de0f30757e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1757709796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6867,7 +6916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[34].second.m_AnimationSpeed
-      value: 5
+      value: 5.0000005
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[35].second.m_AnimationSpeed
@@ -6927,7 +6976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[49].second.m_AnimationSpeed
-      value: 5.0000005
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[50].second.m_AnimationSpeed
@@ -7043,11 +7092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[78].second.m_AnimationSpeed
-      value: 5.0000005
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[79].second.m_AnimationSpeed
-      value: 5
+      value: 5.0000005
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[80].second.m_AnimationSpeed
@@ -7087,7 +7136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[89].second.m_AnimationSpeed
-      value: 5.0000005
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[90].second.m_AnimationSpeed
@@ -7123,7 +7172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[98].second.m_AnimationSpeed
-      value: 5.0000005
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7443111924543124598, guid: b11440def97d0084aaac9b0535339ab5, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[99].second.m_AnimationSpeed
@@ -7395,6 +7444,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 4173459377209768138, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173459377209768138, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1409686144}
@@ -7455,6 +7508,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
+--- !u!114 &7389055675385917578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4173459377209768138, guid: c745c66aaae18c944a36c0e8965b61e9, type: 3}
+  m_PrefabInstance: {fileID: 7389055675385917577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977b99b8cd1e74a4b99ee0ced1d94d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7551765481536561069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8627787866306584701, guid: f855d21bf36e58445a3f6257aac828ef, type: 3}
@@ -7561,6 +7625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill Button - Magic
       objectReference: {fileID: 0}
+    - target: {fileID: 8273786952260443097, guid: 663a04718bd742d46b0454b329b2405a, type: 3}
+      propertyPath: skillDetailsSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5793244fe768ab946b9e09d3d0258621, type: 2}
     - target: {fileID: 8273786952260443097, guid: 663a04718bd742d46b0454b329b2405a, type: 3}
       propertyPath: isSkillUnlocked
       value: 1

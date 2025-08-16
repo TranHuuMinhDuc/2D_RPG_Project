@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Snorx.Data;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class StatManager : MonoBehaviour
 {
     public static StatManager instance;
+    public Slider healthbar;
+    public PlayerHealth playerHealth;
 
     [Header("Stat Template  ")]
     public PlayerDetails baseStat;
@@ -59,5 +63,11 @@ public class StatManager : MonoBehaviour
         weaponRangeSM = baseStat.weaponRange;
         isKnockedBackSM = baseStat.isKnockedBack;
         isAttackingSM = baseStat.isAttacking;
+    }
+    public void updateIncreasedMaxHealth(int amount)
+    {
+        currentPlayerMaxHealth += amount;
+        playerHealth.healthSlider.maxValue = StatManager.instance.currentPlayerMaxHealth;
+        playerHealth.healthSlider.value = StatManager.instance.currentPlayerHealth;
     }
 }
