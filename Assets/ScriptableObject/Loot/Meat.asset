@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ab478ade347734e8415c8434c50909, type: 3}
+  m_Name: Meat
+  m_EditorClassIdentifier: 
+  itemName: Meat
+  itemDescription: A very DELICIOUS meat
+  itemIcon: {fileID: 21300000, guid: 7e34a7e083c3f9e4490cec8b3433cd40, type: 3}
+  isGold: 0
+  maxHealthID: 0
+  itemDamageID: 0
+  itemSpeedID: 0
+  itemDuration: 0

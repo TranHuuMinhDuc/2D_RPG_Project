@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Loot : MonoBehaviour
     public SpriteRenderer itemIcon;
 
     public int quantity;
+    public static event Action<ItemDetails, int> OnItemLooted;
 
     private void OnValidate()
     {
@@ -23,6 +25,7 @@ public class Loot : MonoBehaviour
         if(collision.CompareTag("Player"))
         {          
             anim.Play("LootPickUp");
+            OnItemLooted?.Invoke(itemDetailsSO, quantity);
             Destroy(gameObject, 0.5f);
         }
     }
