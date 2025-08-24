@@ -25,8 +25,11 @@ namespace Snorx.Enum
     }
     public enum  ItemType
     {
-        Steak,
-        Mushroom,
+        Meat,
+        Fungi,
+        Vegetable,
+        Fruit,
+        Currency,
     }
 }
 

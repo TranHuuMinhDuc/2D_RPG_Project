@@ -6,18 +6,20 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-
     public Slider healthSlider;
-    
+    public StatsUI statsUI;
+
     private void Update()
     {
         updateHealthUI();
+        statsUI.statsUpdate();
     }
     public void changeHealth(int amount)    
     {
         StatManager.instance.currentPlayerHealth += amount;
         StatManager.instance.currentPlayerHealth = Mathf.Clamp(StatManager.instance.currentPlayerHealth, 0,
-            StatManager.instance.currentPlayerMaxHealth);
+        StatManager.instance.currentPlayerMaxHealth);
+        statsUI.statsUpdate();
     }
     private void updateHealthUI()
     {

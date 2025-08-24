@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     public TMP_Text goldText;
     public UseItem useItem;
     public InventorySlots[] itemSlots;
+    public GameObject lootPrefab;
+    public Transform playerPosition;
 
 
     private void Start()
@@ -29,27 +31,44 @@ public class InventoryManager : MonoBehaviour
     #endregion
     public void AddItemToInventory(ItemDetails itemDetailsSO, int quantity)
     {
-        if(itemDetailsSO.isGold)
+        //Check if the item is gold
+        if (itemDetailsSO.isGold)
         {           
             gold += quantity;
             goldText.text = gold.ToString();
             return;
         }
-        else
+        //Check if the item is stackable and already exists in the inventory
+        foreach (var slot in itemSlots)
         {
-            foreach(var slot in itemSlots)
+            if(slot.itemDetailsSO == itemDetailsSO && slot.quantity < itemDetailsSO.stackValue)
             {
-                if(slot.itemDetailsSO == null)
-                {
-                    slot.itemDetailsSO = itemDetailsSO;
-                    slot.quantity = quantity;
-                    slot.updateUIIventory();
-                    return;
-                }
-                
+                int availableSpace = itemDetailsSO.stackValue - slot.quantity;
+                int quantityToAdd = Mathf.Min(availableSpace, quantity);
+                slot.quantity += quantityToAdd;
+                quantity -= quantityToAdd;
+                slot.updateUIIventory();
+
             }
         }
-       
+        //Check for empty slots
+        foreach (var slot in itemSlots)
+        {
+            if(slot.itemDetailsSO == null || slot.quantity <= 0)
+            {
+                int quantityToAdd = Mathf.Min(itemDetailsSO.stackValue, quantity);
+                slot.itemDetailsSO = itemDetailsSO;
+                slot.quantity = quantityToAdd;
+                quantity -= quantityToAdd;
+                slot.updateUIIventory();
+                if (quantity <= 0)
+                    return;
+            }            
+        }
+       if(quantity > 0)
+        {
+            dropItemWhenFull(itemDetailsSO, quantity);
+        }
     }
     public void UseItem(InventorySlots slot)
     {
@@ -63,5 +82,21 @@ public class InventoryManager : MonoBehaviour
             }
             slot.updateUIIventory();
         }
+    }
+    public void dropItemWhenFull(ItemDetails itemDetailsSO, int quantity)
+    {
+        Loot loot = Instantiate(lootPrefab, playerPosition.position, Quaternion.identity).GetComponent<Loot>();
+        loot.initialize(itemDetailsSO, quantity);
+    }
+    public void DropItem(InventorySlots slot)
+    {
+        dropItemWhenFull(slot.itemDetailsSO, 1);
+        slot.quantity--;
+        if(slot.quantity <= 0)
+        {
+            slot.quantity = 0;
+            slot.itemDetailsSO = null;
+        }
+        slot.updateUIIventory();
     }
 }

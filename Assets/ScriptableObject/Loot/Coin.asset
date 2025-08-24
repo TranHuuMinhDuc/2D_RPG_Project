@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ab478ade347734e8415c8434c50909, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
+  itemType: 4
   itemTypeEffect: 0
   itemName: Coin
   itemDescription: My PRECIOUS

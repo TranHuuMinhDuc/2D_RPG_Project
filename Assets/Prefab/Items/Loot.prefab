@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e47af03e549f60a43928cec1d59a7538, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4195410870507834070
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5511538502252476432}
   - component: {fileID: 2234644437415393701}
   m_Layer: 0
-  m_Name: Mushroom
+  m_Name: Loot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6662f472fbc84024196fbc1e1696d38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDetailsSO: {fileID: 11400000, guid: 29a09f13568f80f43b54cb438cd927b7, type: 2}
+  itemDetailsSO: {fileID: 0}
   anim: {fileID: 5511538502252476432}
   itemIcon: {fileID: 7137386262433009044}
   quantity: 2

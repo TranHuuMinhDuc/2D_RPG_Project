@@ -9,7 +9,6 @@ public class StatsUI : MonoBehaviour
     public GameObject[] statsSlot;
     public GameObject statsPanel;
     private PlayerInputSystem inputSystem;
-
     
     private void Awake()
     {
@@ -49,8 +48,10 @@ public class StatsUI : MonoBehaviour
 
     public void statsUpdate()
     {
-        statsSlot[0].GetComponentInChildren<TMP_Text>().text = "Damage: " + StatManager.instance.currentPlayerDamage;
-        statsSlot[1].GetComponentInChildren<TMP_Text>().text = "Speed: " + StatManager.instance.currentPlayerSpeed;
+        statsSlot[0].GetComponentInChildren<TMP_Text>().text = "Level: " + StatManager.instance.currentPlayerLevel;
+        statsSlot[1].GetComponentInChildren<TMP_Text>().text = "HP: " + StatManager.instance.currentPlayerHealth + "/" + StatManager.instance.currentPlayerMaxHealth;
+        statsSlot[2].GetComponentInChildren<TMP_Text>().text = "Damage: " + StatManager.instance.currentPlayerDamage;
+        statsSlot[3].GetComponentInChildren<TMP_Text>().text = "Speed: " + StatManager.instance.currentPlayerSpeed;
     }
     public void pauseGame(bool isToggleStatsOn)
     {

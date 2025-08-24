@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ab478ade347734e8415c8434c50909, type: 3}
-  m_Name: Steak
+  m_Name: Pumpkin
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemTypeEffect: 3
-  itemName: Steak
-  itemDescription: A very DELICIOUS meat.
-  itemIcon: {fileID: -845545721, guid: 7e34a7e083c3f9e4490cec8b3433cd40, type: 3}
+  itemType: 2
+  itemTypeEffect: 2
+  itemName: Pumpkin
+  itemDescription: A pumpkin.
+  itemIcon: {fileID: 21300000, guid: c817be9fd4465e447a16b8200c875ca4, type: 3}
   stackValue: 3
-  effectValue: 3
+  effectValue: 5
   itemDuration: 10
   isGold: 0

@@ -22,7 +22,7 @@ public class InventorySlots : MonoBehaviour, IPointerClickHandler
 
     public void updateUIIventory()
     {
-        if (itemDetailsSO != null)
+        if (itemDetailsSO != null && quantity > 0)
         {
             itemIcon.sprite = itemDetailsSO.itemIcon;
             itemIcon.gameObject.SetActive(true);
@@ -30,6 +30,8 @@ public class InventorySlots : MonoBehaviour, IPointerClickHandler
         }
         else
         {
+            itemDetailsSO = null;
+            quantity = 0;
             itemIcon.gameObject.SetActive(false);
             quantityText.text = "";
         }
@@ -37,13 +39,16 @@ public class InventorySlots : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(quantity > 0)
+        if (quantity > 0)
         {
-            if(eventData.button == PointerEventData.InputButton.Left)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
                 inventoryManager.UseItem(this);
             }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                inventoryManager.DropItem(this);
+            }
         }
     }
-
 }

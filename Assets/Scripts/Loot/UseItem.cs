@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Snorx.Enum;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class UseItem : MonoBehaviour
 {
@@ -50,7 +49,9 @@ public class UseItem : MonoBehaviour
     }
     public void checkComsumeItem(bool isComsume)
     {
-        StatManager.instance.isComsumeSteak = isComsume;
-        StatManager.instance.isComsumeMushroom = isComsume;
+        StatManager.instance.isConsumeMeat = isComsume;
+        StatManager.instance.isConsumeFungi = isComsume;
+        StatManager.instance.isConsumeVegetable = isComsume;
+        StatManager.instance.isConsumeFruit = isComsume;
     }
 }

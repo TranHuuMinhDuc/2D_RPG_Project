@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ab478ade347734e8415c8434c50909, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
+  itemType: 1
   itemTypeEffect: 4
   itemName: Mushroom
   itemDescription: This is a Mushroom..or is it?
   itemIcon: {fileID: 21300000, guid: e47af03e549f60a43928cec1d59a7538, type: 3}
+  stackValue: 3
+  effectValue: 2
+  itemDuration: 5
   isGold: 0
-  effectValue: 3
-  itemDuration: 10

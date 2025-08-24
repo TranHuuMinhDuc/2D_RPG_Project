@@ -16,12 +16,12 @@ public class StatManager : MonoBehaviour
     public string playerNameSM;
     public int currentPlayerLevel;
 
-    [Header("Player Movement Details")]
-    public float currentPlayerSpeed;
-
     [Header("Player Health Details")]
     public int currentPlayerMaxHealth;
     public int currentPlayerHealth;
+
+    [Header("Player Movement Details")]
+    public float currentPlayerSpeed;
 
     [Header("Player Combat Details")]
     public int currentPlayerDamage;
@@ -33,8 +33,10 @@ public class StatManager : MonoBehaviour
     [Header("Player State Details")]
     public bool isKnockedBackSM;
     public bool isAttackingSM;
-    public bool isComsumeSteak;
-    public bool isComsumeMushroom;
+    public bool isConsumeMeat;
+    public bool isConsumeFungi;
+    public bool isConsumeVegetable;
+    public bool isConsumeFruit;
 
     [Header("Player Components")]
     public Slider healthbar;
@@ -71,35 +73,40 @@ public class StatManager : MonoBehaviour
     }
     public void updateIncreasedMaxHealth(int amount)
     {
-        currentPlayerMaxHealth += amount;
-        playerHealth.healthSlider.maxValue = StatManager.instance.currentPlayerMaxHealth;
-        playerHealth.healthSlider.value = StatManager.instance.currentPlayerHealth;
+        if (!isConsumeFruit)
+        {
+            currentPlayerMaxHealth += amount;
+            playerHealth.healthSlider.maxValue = StatManager.instance.currentPlayerMaxHealth;
+            playerHealth.healthSlider.value = StatManager.instance.currentPlayerHealth;
+            isConsumeFruit = true;
+        }  
     }
     public void updateCurrentHealth(int amount)
     {
-        if(currentPlayerHealth < currentPlayerMaxHealth)
+        if(currentPlayerHealth < currentPlayerMaxHealth && !isConsumeVegetable)
         {
             currentPlayerHealth += amount;
             currentPlayerHealth = Mathf.Clamp(currentPlayerHealth, 0, currentPlayerMaxHealth);
             playerHealth.healthSlider.value = currentPlayerHealth;
+            isConsumeVegetable = true;
         }
     }
     public void updateCurrentSpeed(int amount)
     {
-        if (!isComsumeMushroom)
+        if (!isConsumeFungi)
         {
             currentPlayerSpeed += amount;
             statsUI.statsUpdate();
-            isComsumeMushroom = true;
+            isConsumeFungi = true;
         }
     }
     public void updateCurrentDamage(int amount)
     {
-        if (!isComsumeSteak)
+        if (!isConsumeMeat)
         {
             currentPlayerDamage += amount;
             statsUI.statsUpdate();
-            isComsumeSteak = true;
+            isConsumeMeat = true;
         }     
     }
 }
