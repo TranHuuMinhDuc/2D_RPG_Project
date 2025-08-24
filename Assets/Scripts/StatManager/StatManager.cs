@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class StatManager : MonoBehaviour
 {
     public static StatManager instance;
-    public Slider healthbar;
-    public PlayerHealth playerHealth;
 
     [Header("Stat Template  ")]
     public PlayerDetails baseStat;
@@ -35,7 +33,14 @@ public class StatManager : MonoBehaviour
     [Header("Player State Details")]
     public bool isKnockedBackSM;
     public bool isAttackingSM;
+    public bool isComsumeSteak;
+    public bool isComsumeMushroom;
 
+    [Header("Player Components")]
+    public Slider healthbar;
+    public PlayerHealth playerHealth;
+    public StatsUI statsUI;
+    
     private void Awake()
     {
         loadBaseStat();
@@ -69,5 +74,32 @@ public class StatManager : MonoBehaviour
         currentPlayerMaxHealth += amount;
         playerHealth.healthSlider.maxValue = StatManager.instance.currentPlayerMaxHealth;
         playerHealth.healthSlider.value = StatManager.instance.currentPlayerHealth;
+    }
+    public void updateCurrentHealth(int amount)
+    {
+        if(currentPlayerHealth < currentPlayerMaxHealth)
+        {
+            currentPlayerHealth += amount;
+            currentPlayerHealth = Mathf.Clamp(currentPlayerHealth, 0, currentPlayerMaxHealth);
+            playerHealth.healthSlider.value = currentPlayerHealth;
+        }
+    }
+    public void updateCurrentSpeed(int amount)
+    {
+        if (!isComsumeMushroom)
+        {
+            currentPlayerSpeed += amount;
+            statsUI.statsUpdate();
+            isComsumeMushroom = true;
+        }
+    }
+    public void updateCurrentDamage(int amount)
+    {
+        if (!isComsumeSteak)
+        {
+            currentPlayerDamage += amount;
+            statsUI.statsUpdate();
+            isComsumeSteak = true;
+        }     
     }
 }

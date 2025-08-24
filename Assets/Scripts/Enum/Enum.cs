@@ -15,5 +15,18 @@ namespace Snorx.Enum
         Attacking,
         Die,
     }
+    public enum  ItemTypeEffect
+    {
+        None,
+        MaxHealth,
+        CurrentHealth,
+        Damage,
+        Speed,
+    }
+    public enum  ItemType
+    {
+        Steak,
+        Mushroom,
+    }
 }
 

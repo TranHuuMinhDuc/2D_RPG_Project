@@ -6,7 +6,9 @@ public class InventoryManager : MonoBehaviour
     [Header("Inventory Settings")]
     public int gold;
     public TMP_Text goldText;
+    public UseItem useItem;
     public InventorySlots[] itemSlots;
+
 
     private void Start()
     {
@@ -15,6 +17,7 @@ public class InventoryManager : MonoBehaviour
             slot.updateUIIventory();
         }
     }
+    #region EventSubscription
     private void OnEnable()
     {
         Loot.OnItemLooted += AddItemToInventory;
@@ -23,10 +26,11 @@ public class InventoryManager : MonoBehaviour
     {
         Loot.OnItemLooted -= AddItemToInventory;
     }
+    #endregion
     public void AddItemToInventory(ItemDetails itemDetailsSO, int quantity)
     {
         if(itemDetailsSO.isGold)
-        {
+        {           
             gold += quantity;
             goldText.text = gold.ToString();
             return;
@@ -46,5 +50,18 @@ public class InventoryManager : MonoBehaviour
             }
         }
        
+    }
+    public void UseItem(InventorySlots slot)
+    {
+        if(slot.itemDetailsSO != null && slot.quantity >= 0)
+        {
+            useItem.applyItemEffect(slot.itemDetailsSO);
+            slot.quantity -= 1;
+            if(slot.quantity <= 0)
+            {
+                slot.itemDetailsSO = null;
+            }
+            slot.updateUIIventory();
+        }
     }
 }
