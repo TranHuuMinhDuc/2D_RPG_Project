@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1469238393480017563}
   - component: {fileID: 4241994751314393155}
   m_Layer: 0
-  m_Name: ItemName
+  m_Name: ItemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3855184566606651422}
   - component: {fileID: 4718917324345474994}
   - component: {fileID: 5608339286952993770}
+  - component: {fileID: 3481189598258475944}
   m_Layer: 0
   m_Name: ShopSLot
   m_TagString: Untagged
@@ -257,6 +258,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3481189598258475944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566401835856697956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a668fe32f60316f41b63b456d03c5f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDetailsSO: {fileID: 0}
+  priceText: {fileID: 7208005731206419830}
+  itemNameText: {fileID: 4241994751314393155}
+  itemIcon: {fileID: 8301714911571369673}
 --- !u!1 &2655772958134581673
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +362,7 @@ GameObject:
   - component: {fileID: 741301911558682693}
   - component: {fileID: 7208005731206419830}
   m_Layer: 0
-  m_Name: Text
+  m_Name: CostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,7 +496,7 @@ GameObject:
   - component: {fileID: 5403054526305814770}
   - component: {fileID: 8301714911571369673}
   m_Layer: 0
-  m_Name: ItemImage
+  m_Name: ItemIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
