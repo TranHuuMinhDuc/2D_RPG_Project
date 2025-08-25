@@ -11,8 +11,12 @@ public class ShopSlot : MonoBehaviour
     public TMP_Text priceText;
     public TMP_Text itemNameText;
     public Image itemIcon;
-    private int price;
-
+    public int price;
+    [SerializeField] private ShopManager shopManager;
+    private void Start()
+    {
+        shopManager = GetComponentInParent<ShopManager>();
+    }
     public void Initialize(ItemDetails item, int price)
     {
         itemDetailsSO = item;
@@ -20,5 +24,9 @@ public class ShopSlot : MonoBehaviour
         priceText.text = price.ToString();
         itemNameText.text = itemDetailsSO.itemName;
         this.price = price;
+    }
+    public void onBuyButtonClicked()
+    {
+        shopManager.tryBuyItem(itemDetailsSO, price);
     }
 }
