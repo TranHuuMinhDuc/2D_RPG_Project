@@ -24,13 +24,9 @@ public class UseItem : MonoBehaviour
     {
         int value;
         if(isApplying)
-        {
             value = item.effectValue;
-        }
         else
-        {
             value = -item.effectValue;
-        }
         switch (item.itemTypeEffect)
         {
             case ItemTypeEffect.MaxHealth:

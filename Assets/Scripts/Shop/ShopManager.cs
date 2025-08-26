@@ -44,22 +44,16 @@ public class ShopManager : MonoBehaviour
         foreach (var slot in inventoryManager.itemSlots)
         {
             if (slot.itemDetailsSO == item && slot.quantity < item.stackValue)
-            {
                 return true;
-            }
             else if (slot.itemDetailsSO == null )
-            {
                 return true;
-            }
         }
         return false;
     }
     public void sellItem(ItemDetails item)
     {
         if(item == null)
-        {
             return;
-        }
         foreach (var slot in shopSlots)
         {
             if(slot.itemDetailsSO == item)
