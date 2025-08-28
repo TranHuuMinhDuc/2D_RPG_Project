@@ -20,7 +20,7 @@ public class SkillManager : MonoBehaviour
         switch (skillName)
         {
             case "Max Health Boost":
-                StatManager.instance.updateIncreasedMaxHealth(2);
+                StatManager.instance.updateMaxHealth(2, false);
                 break;
             case "Bow Weapon":
                 //TODO: Implement bow weapon logic

@@ -7,39 +7,41 @@ public class UseItem : MonoBehaviour
 {
     public void applyItemEffect(ItemDetails item)
     {
-        changeItemType(item, true);
+        changeItemTypeEffect(item, true);
         if (item.itemDuration > 0)
         {
             StartCoroutine(removeItemEffect(item, item.itemDuration));
         }
     }
-    private IEnumerator removeItemEffect(ItemDetails itemDetailsSO, float duration)
+    private IEnumerator removeItemEffect(ItemDetails item, float duration)
     {
         yield return new WaitForSeconds(duration);
-        changeItemType(itemDetailsSO, false);
+        Debug.Log("Removing Effect of " + item.itemName);
+        changeItemTypeEffect(item, false);
         checkComsumeItem(false);
 
     }
-    public void changeItemType(ItemDetails item, bool isApplying)
+    public void changeItemTypeEffect(ItemDetails item, bool isApplying)
     {
         int value;
         if(isApplying)
             value = item.effectValue;
-        else
+        else 
             value = -item.effectValue;
         switch (item.itemTypeEffect)
         {
             case ItemTypeEffect.MaxHealth:
-                StatManager.instance.updateIncreasedMaxHealth(value);
+                StatManager.instance.updateMaxHealth(value, true);
                 break;
             case ItemTypeEffect.CurrentHealth:
-                StatManager.instance.updateCurrentHealth(value);
+                if (isApplying)
+                    StatManager.instance.updateCurrentHealth(item.effectValue, false);
                 break;
             case ItemTypeEffect.Damage:
-                StatManager.instance.updateCurrentDamage(value);
+                StatManager.instance.updateCurrentDamage(value, true);
                 break;
             case ItemTypeEffect.Speed:
-                StatManager.instance.updateCurrentSpeed(value);
+                StatManager.instance.updateCurrentSpeed(value, true);
                 break;
         }
     }

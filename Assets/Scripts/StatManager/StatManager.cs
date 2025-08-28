@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class StatManager : MonoBehaviour
 {
     public static StatManager instance;
-
+    #region Properties
     [Header("Stat Template  ")]
     public PlayerDetails baseStat;
 
@@ -42,7 +42,7 @@ public class StatManager : MonoBehaviour
     public Slider healthbar;
     public PlayerHealth playerHealth;
     public StatsUI statsUI;
-    
+    #endregion
     private void Awake()
     {
         loadBaseStat();
@@ -71,17 +71,18 @@ public class StatManager : MonoBehaviour
         isKnockedBackSM = baseStat.isKnockedBack;
         isAttackingSM = baseStat.isAttacking;
     }
-    public void updateIncreasedMaxHealth(int amount)
+    public void updateMaxHealth(int amount, bool isBuff)
     {
-        if (!isConsumeFruit)
+        
+        if (isBuff) 
         {
             currentPlayerMaxHealth += amount;
-            playerHealth.healthSlider.maxValue = StatManager.instance.currentPlayerMaxHealth;
-            playerHealth.healthSlider.value = StatManager.instance.currentPlayerHealth;
+            statsUI.statsUpdate();
             isConsumeFruit = true;
-        }  
+            return;
+        }
     }
-    public void updateCurrentHealth(int amount)
+    public void updateCurrentHealth(int amount, bool isBuff)
     {
         if(currentPlayerHealth < currentPlayerMaxHealth && !isConsumeVegetable)
         {
@@ -91,22 +92,27 @@ public class StatManager : MonoBehaviour
             isConsumeVegetable = true;
         }
     }
-    public void updateCurrentSpeed(int amount)
+    public void updateCurrentSpeed(int amount, bool isBuff)
     {
-        if (!isConsumeFungi)
+        
+        if (isBuff) 
         {
             currentPlayerSpeed += amount;
             statsUI.statsUpdate();
             isConsumeFungi = true;
+            return;
         }
     }
-    public void updateCurrentDamage(int amount)
+    public void updateCurrentDamage(int amount, bool isBuff)
     {
-        if (!isConsumeMeat)
+        
+        if (isBuff) 
         {
             currentPlayerDamage += amount;
             statsUI.statsUpdate();
             isConsumeMeat = true;
-        }     
+            return;
+        }
+
     }
 }

@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class Player_Combat : MonoBehaviour
 {
+    [Header("Player Component")]
     public Player playerSO;
     public Transform attackPoint;
-    public LayerMask enemyLayer;
-    public float testWeaponRange = 1;
     public StatsUI statsUI;
-    public float attackTimer;
 
+    [Header("Player Status Tracking")]
+    public float testWeaponRange = 1;
+    public LayerMask enemyLayer;
+    public float attackTimer;
     private PlayerState playerState;
 
     #region IEnumerators
