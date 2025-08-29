@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -9,10 +10,17 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private List<ShopItems> shopItemsList;
     [SerializeField] private ShopSlot[] shopSlots;
+    [SerializeField] private GameObject shopPanel;
+    private bool isShopOpen;
     private void Start()
     {
-        populateShopItems();
-        OnShopStateChanged?.Invoke(this, true);
+        populateShopItems();       
+    }
+    public void ToggleShop()
+    {
+        isShopOpen = !isShopOpen;
+        shopPanel.SetActive(isShopOpen);    
+        OnShopStateChanged?.Invoke(this, isShopOpen);
     }
     public void populateShopItems()
     {
