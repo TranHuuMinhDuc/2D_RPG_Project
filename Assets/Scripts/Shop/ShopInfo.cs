@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Snorx.Enum;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class ShopInfo : MonoBehaviour
 {

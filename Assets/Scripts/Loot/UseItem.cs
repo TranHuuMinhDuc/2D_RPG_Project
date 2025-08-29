@@ -8,6 +8,7 @@ public class UseItem : MonoBehaviour
     public void applyItemEffect(ItemDetails item)
     {
         changeItemTypeEffect(item, true);
+        Debug.Log("Apply Effect " + item.itemName);
         if (item.itemDuration > 0)
         {
             StartCoroutine(removeItemEffect(item, item.itemDuration));
@@ -18,7 +19,7 @@ public class UseItem : MonoBehaviour
         yield return new WaitForSeconds(duration);
         Debug.Log("Removing Effect of " + item.itemName);
         changeItemTypeEffect(item, false);
-        checkComsumeItem(false);
+        checkComsumeItem(item);
 
     }
     public void changeItemTypeEffect(ItemDetails item, bool isApplying)
@@ -45,11 +46,22 @@ public class UseItem : MonoBehaviour
                 break;
         }
     }
-    public void checkComsumeItem(bool isComsume)
+    public void checkComsumeItem(ItemDetails item)
     {
-        StatManager.instance.isConsumeMeat = isComsume;
-        StatManager.instance.isConsumeFungi = isComsume;
-        StatManager.instance.isConsumeVegetable = isComsume;
-        StatManager.instance.isConsumeFruit = isComsume;
+        switch (item.itemType)
+        {
+            case ItemType.Fruit:
+                StatManager.instance.isConsumeFruit = false;
+                break;
+            case ItemType.Vegetable:
+                StatManager.instance.isConsumeVegetable = false;
+                break;
+            case ItemType.Meat:
+                StatManager.instance.isConsumeMeat = false;
+                break;
+            case ItemType.Fungi:
+                StatManager.instance.isConsumeFungi = false;
+                break;
+        }                   
     }
 }

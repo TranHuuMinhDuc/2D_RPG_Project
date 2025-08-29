@@ -73,8 +73,7 @@ public class StatManager : MonoBehaviour
     }
     public void updateMaxHealth(int amount, bool isBuff)
     {
-        
-        if (isBuff) 
+        if (isBuff) //Temporary Buff
         {
             currentPlayerMaxHealth += amount;
             statsUI.statsUpdate();
@@ -84,7 +83,7 @@ public class StatManager : MonoBehaviour
     }
     public void updateCurrentHealth(int amount, bool isBuff)
     {
-        if(currentPlayerHealth < currentPlayerMaxHealth && !isConsumeVegetable)
+        if(currentPlayerHealth < currentPlayerMaxHealth && !isConsumeVegetable) //Heal
         {
             currentPlayerHealth += amount;
             currentPlayerHealth = Mathf.Clamp(currentPlayerHealth, 0, currentPlayerMaxHealth);

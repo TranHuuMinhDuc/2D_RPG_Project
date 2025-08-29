@@ -67,7 +67,7 @@ public class InventorySlots : MonoBehaviour, IPointerClickHandler
         {            
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                if (activeShop != null)
+                if (activeShop != null)                 //Shop is Open
                 {
                     activeShop.sellItem(itemDetailsSO);
                     quantity--;
@@ -80,7 +80,9 @@ public class InventorySlots : MonoBehaviour, IPointerClickHandler
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                inventoryManager.DropItem(this);
+                if(activeShop == null)  
+                    inventoryManager.DropItem(this);
+                    
             }
         }
     }

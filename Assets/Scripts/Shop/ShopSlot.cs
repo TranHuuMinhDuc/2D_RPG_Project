@@ -39,13 +39,13 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {
+    {  
             shopInfo.hideItemInfo();      
     }
 
     public void OnPointerMove(PointerEventData eventData)
-    {
-        if(itemDetailsSO != null)
+    {       
             shopInfo.followMouse();
     }
+
 }

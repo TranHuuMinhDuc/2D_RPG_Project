@@ -72,7 +72,8 @@ public class InventoryManager : MonoBehaviour
     }
     public void UseItem(InventorySlots slot)
     {
-        if(slot.itemDetailsSO != null && slot.quantity >= 0)
+        Debug.Log("Using Item: " + slot.itemDetailsSO.itemName);
+        if (slot.itemDetailsSO != null && slot.quantity >= 0)
         {
             useItem.applyItemEffect(slot.itemDetailsSO);
             slot.quantity -= 1;
