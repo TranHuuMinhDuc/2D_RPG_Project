@@ -16,7 +16,7 @@ public class ShopManager : MonoBehaviour
     {
         populateShopItems();       
     }
-    public void ToggleShop()
+    public void ToggleShop() //TODO: Add inputSystem to control when can open shop
     {
         isShopOpen = !isShopOpen;
         shopPanel.SetActive(isShopOpen);    
