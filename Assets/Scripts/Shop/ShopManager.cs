@@ -1,25 +1,31 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    public static event Action<ShopManager, bool > OnShopStateChanged;
+    public static ShopManager instance;
+    public static event Action<ShopManager, bool> OnShopStateChanged;
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private List<ShopItems> shopItemsList;
     [SerializeField] private ShopSlot[] shopSlots;
     [SerializeField] private GameObject shopPanel;
     private bool isShopOpen;
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
     private void Start()
     {
-        populateShopItems();       
+        populateShopItems();
     }
     public void ToggleShop() //TODO: Add inputSystem to control when can open shop
     {
         isShopOpen = !isShopOpen;
-        shopPanel.SetActive(isShopOpen);    
+        shopPanel.SetActive(isShopOpen);
         OnShopStateChanged?.Invoke(this, isShopOpen);
     }
     public void populateShopItems()
@@ -37,9 +43,9 @@ public class ShopManager : MonoBehaviour
     }
     public void tryBuyItem(ItemDetails item, int price)
     {
-        if(item != null && inventoryManager.gold >= price)
+        if (item != null && inventoryManager.gold >= price)
         {
-            if(checkSpaceForItem(item))
+            if (checkSpaceForItem(item))
             {
                 inventoryManager.gold -= price;
                 inventoryManager.goldText.text = inventoryManager.gold.ToString();
@@ -53,18 +59,18 @@ public class ShopManager : MonoBehaviour
         {
             if (slot.itemDetailsSO == item && slot.quantity < item.stackValue)
                 return true;
-            else if (slot.itemDetailsSO == null )
+            else if (slot.itemDetailsSO == null)
                 return true;
         }
         return false;
     }
     public void sellItem(ItemDetails item)
     {
-        if(item == null)
+        if (item == null)
             return;
         foreach (var slot in shopSlots)
         {
-            if(slot.itemDetailsSO == item)
+            if (slot.itemDetailsSO == item)
             {
                 inventoryManager.gold += slot.price;
                 inventoryManager.goldText.text = inventoryManager.gold.ToString();

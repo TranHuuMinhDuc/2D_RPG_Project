@@ -1,32 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player_Interact : MonoBehaviour
 {
-    public PlayerInputSystem playerInput;
+    public float interactRange = 1;
     public LayerMask interactableLayer;
+    private PlayerInputSystem playerInput;
+    public void Awake()
+    {
+        playerInput = new PlayerInputSystem();
+    }
 
-    private bool isPlayerInRange;
     #region InputSystem
     private void OnEnable()
     {
-        
+        playerInput.Enable();
+        playerInput.Player.Interact.performed += onInteract;
     }
     private void OnDisable()
     {
-        
+        playerInput.Disable();
+        playerInput.Player.Interact.performed -= onInteract;
+    }
+    public void onInteract(InputAction.CallbackContext context)
+    {
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, interactRange, interactableLayer);
+        if (collider != null)
+        {
+            IInteractable interactable = collider.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactable.Interact();
+            }
+        }
     }
     #endregion
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnDrawGizmosSelected()
     {
-        
-    }
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            isPlayerInRange = false;
-        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, interactRange);
     }
 }

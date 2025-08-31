@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2656179603890676144}
   - component: {fileID: 4173459377209768138}
   - component: {fileID: 2335276792749642687}
+  - component: {fileID: 4983640638092860086}
   m_Layer: 7
   m_Name: Warrior
   m_TagString: Player
@@ -234,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
+  statsUI: {fileID: 0}
 --- !u!114 &2335276792749642687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,12 +250,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSO: {fileID: 2656179603890676144}
   attackPoint: {fileID: 7184706663101759686}
+  statsUI: {fileID: 0}
+  testWeaponRange: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  testWeaponRange: 1
-  statsUI: {fileID: 0}
   attackTimer: 0
+--- !u!114 &4983640638092860086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649253453992278287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c154fe143df019e41843bc7f0058e0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 1
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &3604274655855621117
 GameObject:
   m_ObjectHideFlags: 0
