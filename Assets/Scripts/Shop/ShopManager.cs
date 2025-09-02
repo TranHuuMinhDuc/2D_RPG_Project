@@ -5,38 +5,24 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager instance;
-    public static event Action<ShopManager, bool> OnShopStateChanged;
     [SerializeField] private InventoryManager inventoryManager;
-    [SerializeField] private List<ShopItems> shopItemsList;
     [SerializeField] private ShopSlot[] shopSlots;
-    [SerializeField] private GameObject shopPanel;
-    private bool isShopOpen;
     private void Awake()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
-    }
-    private void Start()
+    }    
+    public void populateShopItems(List<ShopItems> list)
     {
-        populateShopItems();
-    }
-    public void ToggleShop() //TODO: Add inputSystem to control when can open shop
-    {
-        isShopOpen = !isShopOpen;
-        shopPanel.SetActive(isShopOpen);
-        OnShopStateChanged?.Invoke(this, isShopOpen);
-    }
-    public void populateShopItems()
-    {
-        for (int i = 0; i < shopItemsList.Count && i < shopSlots.Length; i++)
+        for (int i = 0; i < list.Count && i < shopSlots.Length; i++)
         {
-            ShopItems shopItem = shopItemsList[i];
+            ShopItems shopItem = list[i];
             shopSlots[i].Initialize(shopItem.itemDetailsSO, shopItem.price);
             shopSlots[i].gameObject.SetActive(true);
         }
-        for (int i = shopItemsList.Count; i < shopSlots.Length; i++)
+        for (int i = list.Count; i < shopSlots.Length; i++)
         {
             shopSlots[i].gameObject.SetActive(false);
         }

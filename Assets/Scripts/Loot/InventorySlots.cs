@@ -22,11 +22,13 @@ public class InventorySlots : MonoBehaviour, IPointerClickHandler
     }
     private void OnEnable()
     {
-        ShopManager.OnShopStateChanged += HandleShopStateChange;
+        //ShopManager.OnShopStateChanged += HandleShopStateChange;
+        ShopKeeper.OnShopStateChanged += HandleShopStateChange;
     }
     private void OnDisable()
     {
-        ShopManager.OnShopStateChanged -= HandleShopStateChange;
+        //ShopManager.OnShopStateChanged -= HandleShopStateChange;
+        ShopKeeper.OnShopStateChanged -= HandleShopStateChange;
     }
     private void HandleShopStateChange(ShopManager shopManager, bool isOpen)
     {
