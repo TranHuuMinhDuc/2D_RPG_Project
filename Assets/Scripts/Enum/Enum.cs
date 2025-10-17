@@ -31,5 +31,10 @@ namespace Snorx.Enum
         Fruit,
         Currency,
     }
+    public enum  NPCState
+    {
+        Wander,
+        Talk,
+    }
 }
 

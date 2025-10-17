@@ -30,7 +30,7 @@ public class NPC_Wander : MonoBehaviour
             rb.velocity = Vector2.zero;
             return;
         }
-        if (Vector2.Distance(transform.position,target) < 0.1f)
+        if (Vector2.Distance(transform.position, target) < 0.1f)
         {
             StartCoroutine(pauseWander());
         }
@@ -60,8 +60,8 @@ public class NPC_Wander : MonoBehaviour
     }
     private Vector2 getRandomTarget()
     {
-        float halfX = wanderX /2;
-        float halfY = wanderY /2;
+        float halfX = wanderX / 2;
+        float halfY = wanderY / 2;
         int edge = Random.Range(0, 4);
         return edge switch
         {
