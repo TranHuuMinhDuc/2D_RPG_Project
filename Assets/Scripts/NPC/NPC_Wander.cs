@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -28,6 +29,7 @@ public class NPC_Wander : MonoBehaviour
         if (isPaused)
         {
             rb.velocity = Vector2.zero;
+            anim.Play("Pawn_Purple_Idle");
             return;
         }
         if (Vector2.Distance(transform.position, target) < 0.1f)
@@ -39,6 +41,12 @@ public class NPC_Wander : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(pauseWander());
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        rb.velocity = Vector2.zero;
+        anim.Play("Pawn_Purple_Idle");
     }
     IEnumerator pauseWander()
     {

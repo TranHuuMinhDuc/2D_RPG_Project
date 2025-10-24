@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e707b579afe914887ce387569b86ef, type: 3}
+  m_Name: Greeting with Jeff
+  m_EditorClassIdentifier: 
+  lines:
+  - speeker: {fileID: 11400000, guid: 7befecdc84c3fbc45a450e53c6a8f13d, type: 2}
+    text: Hello stranger, nice to see new people in this land.
+  - speeker: {fileID: 11400000, guid: 7befecdc84c3fbc45a450e53c6a8f13d, type: 2}
+    text: We dont have much visitor here since The Great War. What are you doing
+      here.
+  - speeker: {fileID: 11400000, guid: 7befecdc84c3fbc45a450e53c6a8f13d, type: 2}
+    text: what can i do for you.
+  - speeker: {fileID: 11400000, guid: 3ce1530f550a0674c827730a87e6509d, type: 2}
+    text: Who are you...and where am i ?
+  - speeker: {fileID: 11400000, guid: 7befecdc84c3fbc45a450e53c6a8f13d, type: 2}
+    text: I am a merchant roam across the land. You are in the land of GOD
+  options:
+  - optionText: Tell me more.
+    nextDialogue: {fileID: 11400000, guid: 413715b2d30057d499f03d2737002745, type: 2}
+  - optionText: Not interested.
+    nextDialogue: {fileID: 11400000, guid: 22e8a9c7bb2cd464386cfb76e6e4505d, type: 2}
