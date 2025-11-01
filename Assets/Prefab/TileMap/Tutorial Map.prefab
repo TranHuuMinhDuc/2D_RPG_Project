@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 4697301289834565760}
   - component: {fileID: 583485991913464472}
   m_Layer: 0
-  m_Name: TileMap
+  m_Name: Tutorial Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
