@@ -11,8 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Center.unity
     guid: 1f660f17a201ca543b286d32fc0ccbaf
-  - enabled: 0
-    path: Assets/Scenes/Test.unity
-    guid: d0a0314b3b015bf4fa68f36addbe70a4
+  - enabled: 1
+    path: Assets/Scenes/Left.unity
+    guid: a9d0217646fe86b47baf13b6e29e1d54
+  - enabled: 1
+    path: Assets/Scenes/Down.unity
+    guid: 90925efbbe86cf447b5d27303399759f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
